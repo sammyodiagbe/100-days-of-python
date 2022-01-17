@@ -68,7 +68,7 @@ def print_report():
     serve_customer()
 
 def serve_customer():
-    customer_response = input('What would you like? (espresso/latter/cappuccino):')
+    customer_response = input('What would you like? (espresso/latte/cappuccino):')
     if customer_response in ['expresso', 'latte', 'cappuccino']:
         process_customer_order(customer_response)
 
