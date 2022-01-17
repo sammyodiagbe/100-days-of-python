@@ -28,6 +28,7 @@ resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
+    "money": 0
 }
 
 coin_values = {
@@ -47,10 +48,10 @@ def process_coin(preffered_drink, coffee_drink):
     if total_in_dollars < preffered_drink['cost']:
         print('Sorry that is not enough money. Money refunded')
         return serve_customer()
-    resources['money'] = resources['money'] + total_in_dollars
+    resources['money'] = resources['money'] + preffered_drink['cost'] if resources['money'] >= 0 else preffered_drink['cost']
     print_report()
     print(f'Here is your {coffee_drink}. Enjoy!')
-    return serve_customer()
+    return #serve_customer()
 
 # process the customers order
 def process_customer_order(customer_response):
