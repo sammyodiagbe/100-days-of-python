@@ -48,10 +48,13 @@ def process_coin(preffered_drink, coffee_drink):
     if total_in_dollars < preffered_drink['cost']:
         print('Sorry that is not enough money. Money refunded')
         return serve_customer()
+    change = round(total_in_dollars - preffered_drink['cost'], 2)
     resources['money'] = resources['money'] + preffered_drink['cost'] if resources['money'] >= 0 else preffered_drink['cost']
     print_report()
+    if change > 0 :
+        print(f'Here is ${change} dollars in change.')
     print(f'Here is your {coffee_drink}. Enjoy!')
-    return #serve_customer()
+    return serve_customer()
 
 # process the customers order
 def process_customer_order(customer_response):
@@ -65,13 +68,16 @@ def process_customer_order(customer_response):
 
 # print the available resources
 def print_report():
-    for key in resources:
-        print(f'{key} : {resources[key]}')
-    serve_customer()
+        list_of_keys = list(resources.keys())
+        measurement = ['ml', 'ml', 'g']
+        for key in range(len(list_of_keys) - 1):
+            print(f'{list_of_keys[key]} : {resources[list_of_keys[key]]}{measurement[key]}')
+        print(f'money : ${resources["money"]}')
+        return serve_customer()
 
 def serve_customer():
     customer_response = input('What would you like? (espresso/latte/cappuccino):')
-    if customer_response in ['expresso', 'latte', 'cappuccino']:
+    if customer_response in ['espresso', 'latte', 'cappuccino']:
         process_customer_order(customer_response)
 
     elif customer_response == 'off':
