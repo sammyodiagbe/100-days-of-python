@@ -54,7 +54,8 @@ def process_coin(preffered_drink, coffee_drink):
 # process the customers order
 def process_customer_order(customer_response):
     preffered_drink = MENU[customer_response]
-    preffered_drink_ingredients = preffered_drink.ingredients
+    print(preffered_drink)
+    preffered_drink_ingredients = preffered_drink['ingredients']
     for key in preffered_drink_ingredients:
         if(preffered_drink_ingredients[key] < resources[key]):
             print(f'Sorry there is not enough {key}')
