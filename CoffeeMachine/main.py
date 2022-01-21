@@ -38,13 +38,16 @@ coin_values = {
     'quarters': 0.5
 }
 
+
 def process_coin(preffered_drink, coffee_drink):
-    print(preffered_drink)
     number_of_pennies = float(input("Insert number of pennies: "))
     number_of_nickles = float(input("Insert number of nickles: "))
     number_of_dimes = float(input("Inset number of dimes: "))
     number_of_quarters = float(input("Insert number of quarters: "))
-    total_in_dollars = coin_values['pennies'] * number_of_pennies + coin_values['nickles'] * number_of_nickles + coin_values['dimes'] * number_of_dimes + coin_values['quarters'] * number_of_quarters
+    total_in_dollars = coin_values['pennies'] * number_of_pennies
+    total_in_dollars += coin_values['nickles'] * number_of_nickles
+    total_in_dollars += coin_values['dimes'] * number_of_dimes
+    total_in_dollars += coin_values['quarters'] * number_of_quarters
     if total_in_dollars < preffered_drink['cost']:
         print('Sorry that is not enough money. Money refunded')
         return serve_customer()
