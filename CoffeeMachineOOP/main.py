@@ -50,7 +50,7 @@ class CoffeeMachine:
         preffered_drink_ingredients = preffered_drink['ingredients']
         for key in preffered_drink_ingredients:
             if preffered_drink_ingredients[key] > self.resources[key]:
-                print(f'Sorry there is not enough {key}')
+                print(f'Sorry there isn\'t enough {key}')
                 return self.serve_customer()
         return self.process_coin(preffered_drink, customer_response)
         pass
